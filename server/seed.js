@@ -4,6 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 async function seed() {
+  if (process.env.RESET_DATABASE !== '1' || process.env.SEED_DEMO_DATA !== '1') {
+    throw new Error('Refusing demo seed without RESET_DATABASE=1 and SEED_DEMO_DATA=1');
+  }
   const client = await pool.connect();
   try {
     // Run schema
@@ -12,14 +15,20 @@ async function seed() {
     console.log('Schema created successfully');
 
     // Create demo user
-    const hashedPassword = await bcrypt.hash('password123', 10);
-    await client.query(`
+    const adminEmail = process.env.SEED_ADMIN_EMAIL || process.env.ADMIN_EMAIL;
+    const adminPassword = process.env.SEED_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD;
+    const adminName = process.env.BOOTSTRAP_ADMIN_NAME || 'Demo User';
+    if (!adminEmail || !adminPassword) {
+      throw new Error('SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD are required');
+    }
+    const hashedPassword = await bcrypt.hash(adminPassword, 12);
+    const userResult = await client.query(`
       INSERT INTO users (email, password, name) VALUES ($1, $2, $3)
       ON CONFLICT (email) DO UPDATE SET password = $2, name = $3 RETURNING id
-    `, ['demo@nutrition.com', hashedPassword, 'Demo User']);
+    `, [adminEmail, hashedPassword, adminName]);
     console.log('Demo user created');
 
-    const userId = 1;
+    const userId = userResult.rows[0].id;
 
     // Seed Meal Plans (15 items)
     await client.query('DELETE FROM meal_plans WHERE user_id = $1', [userId]);
@@ -427,7 +436,7 @@ async function seed() {
     console.log('Seeded 15 AI chat histories');
 
     console.log('\n✅ All seed data inserted successfully!');
-    console.log('Demo login: demo@nutrition.com / password123');
+    console.log(`Demo identity provisioned for ${adminEmail}`);
   } catch (err) {
     console.error('Seed error:', err);
     throw err;
@@ -437,4 +446,7 @@ async function seed() {
   }
 }
 
-seed();
+seed().catch((err) => {
+  console.error('Seed refused or failed:', err.message);
+  process.exit(1);
+});
