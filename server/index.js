@@ -272,7 +272,8 @@ app.post('/api/calories/ai-photo-analyze', auth, aiRateLimiter, imageUpload.sing
     const apiKey = process.env.OPENROUTER_API_KEY;
     const model = process.env.OPENROUTER_MODEL || 'anthropic/claude-3-5-sonnet-20241022';
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const openRouterUrl = `${(process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1').replace(/\/$/, '')}/chat/completions`;
+    const response = await fetch(openRouterUrl, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,

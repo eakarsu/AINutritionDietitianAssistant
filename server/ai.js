@@ -5,6 +5,8 @@ const DEFAULT_MODEL = 'anthropic/claude-3-5-sonnet-20241022';
 async function queryAI(prompt, systemMessage = 'You are an expert nutritionist and dietitian assistant. Provide detailed, professional, and helpful advice.', conversationHistory = []) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   const model = process.env.OPENROUTER_MODEL || DEFAULT_MODEL;
+  const openRouterUrl = `${(process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1').replace(/\/$/, '')}/chat/completions`;
+  if (!apiKey) throw new Error('OPENROUTER_API_KEY is not configured');
 
   // Build messages array: system + history + current user message
   const messages = [
@@ -13,7 +15,7 @@ async function queryAI(prompt, systemMessage = 'You are an expert nutritionist a
     { role: 'user', content: prompt },
   ];
 
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  const response = await fetch(openRouterUrl, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -35,7 +37,9 @@ async function queryAI(prompt, systemMessage = 'You are an expert nutritionist a
   }
 
   const data = await response.json();
-  return data.choices?.[0]?.message?.content || 'No response from AI';
+  const content = data.choices?.[0]?.message?.content;
+  if (!content) throw new Error('OpenRouter returned no message content');
+  return content;
 }
 
 /**
