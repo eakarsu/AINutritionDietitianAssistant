@@ -1,3 +1,4 @@
+import WorkflowSidebar from './WorkflowSidebar';
 import { useEffect, useState } from 'react';
 import './App.css';
 
@@ -74,8 +75,8 @@ export default function App() {
   </form></main>;
 
   return (
-    <main className="shell">
-      <section className="hero">
+    <div className="codex-nav-shell"><WorkflowSidebar title="NutritionDietitianAssistant" features={FEATURES} /><main className="shell">
+      <section className="hero" id="overview">
         <p className="eyebrow">Restored application boundary</p>
         <h1>AI Nutrition & Dietitian Assistant</h1>
         <p className="lede">This checked-in UI exposes the primary workflow boundary without presenting generated screens as completed execution.</p>
@@ -89,7 +90,7 @@ export default function App() {
         <h2 id="workflow-heading">Primary workflow</h2>
         <div className="workflow">
           {FEATURES.map((feature, index) => (
-            <article key={feature}>
+            <article key={feature} id={`step-${index + 1}`}>
               <strong>{String(index + 1).padStart(2, '0')}</strong>
               <h3>{feature}</h3>
               <p>Backend integration and validation remain required before this step can execute in production.</p>
@@ -97,6 +98,6 @@ export default function App() {
           ))}
         </div>
       </section>
-    </main>
+    </main></div>
   );
 }
