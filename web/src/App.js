@@ -1,5 +1,7 @@
+import { useEffect, useRef, useState } from 'react';
+import NativeWorkflowStudio from './NativeWorkflowStudio';
+import nativeWorkflowConfig from './nativeWorkflowConfig.json';
 import WorkflowSidebar from './WorkflowSidebar';
-import { useEffect, useState } from 'react';
 import './App.css';
 
 const FEATURES = [
@@ -12,13 +14,20 @@ const configuredApiBase = process.env.REACT_APP_API_URL || '';
 const API_BASE = typeof window === 'undefined' ? configuredApiBase : configuredApiBase.replace(/127\.0\.0\.1|localhost/, window.location.hostname);
 
 async function api(path, options = {}) {
-  const response = await fetch(`${API_BASE}${path}`, { ...options, headers: { Accept: 'application/json', 'Content-Type': 'application/json', ...options.headers } });
+  const headers = { Accept: 'application/json', ...options.headers };
+  if (!(options.body instanceof FormData)) headers['Content-Type'] = 'application/json';
+  const response = await fetch(`${API_BASE}${path}`, { ...options, headers });
   const body = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(body.error || body.message || `Request failed with HTTP ${response.status}`);
   return body;
 }
 
+function authenticatedNativeRequest(path, options = {}) { return api(path, { ...options, headers: { ...(options.headers || {}), Authorization: `Bearer ${localStorage.getItem('authToken') || ''}` } }); }
+
 export default function App() {
+  const demoLoginLock = useRef(false);
+  const [demoLoginBusy, setDemoLoginBusy] = useState(false);
+
   const [service, setService] = useState({ status: 'loading', detail: 'Checking the API boundary…' });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,24 +54,32 @@ export default function App() {
     api('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } }).then((body) => setUser(body.user || body)).catch(() => localStorage.removeItem('authToken'));
   }, []);
 
-  const fillDemoCredentials = async () => {
-    setError(''); setBusy(true);
-    try { const credentials = await api('/api/auth/demo-credentials'); setEmail(credentials.email); setPassword(credentials.password)
-
-}
-    catch (requestError) { setError(requestError.message); }
-    finally { setBusy(false); }
+  const login = async (credentials) => {
+    const result = await api('/api/auth/login', { method: 'POST', body: JSON.stringify(credentials) });
+    localStorage.setItem('authToken', result.token);
+    const identity = await api('/api/auth/me', { headers: { Authorization: `Bearer ${result.token}` } });
+    setUser(identity.user || identity);
   };
 
   const handleLogin = async (event) => {
     event.preventDefault(); setError(''); setBusy(true);
-    try {
-      const result = await api('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
-      localStorage.setItem('authToken', result.token);
-      const identity = await api('/api/auth/me', { headers: { Authorization: `Bearer ${result.token}` } });
-      setUser(identity.user || identity);
-    } catch (requestError) { localStorage.removeItem('authToken'); setError(requestError.message); }
+    try { await login({ email, password }); }
+    catch (requestError) { localStorage.removeItem('authToken'); setError(requestError.message); }
     finally { setBusy(false); }
+  };
+
+  const handleDemoLogin = async () => {
+    if (demoLoginLock.current) return;
+    demoLoginLock.current = true; setDemoLoginBusy(true); setError('');
+    try {
+      const credentials = await api('/api/auth/demo-credentials');
+      setEmail(credentials.email); setPassword(credentials.password);
+      await login(credentials);
+    } catch (requestError) {
+      localStorage.removeItem('authToken'); setError(requestError.message);
+    } finally {
+      demoLoginLock.current = false; setDemoLoginBusy(false);
+    }
   };
 
   if (!user) return <main className="login-shell"><form className="login-card" onSubmit={handleLogin}>
@@ -70,8 +87,8 @@ export default function App() {
     {error && <p className="form-error" role="alert">{error}</p>}
     <label>Email<input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required autoComplete="username" /></label>
     <label>Password<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} required autoComplete="current-password" /></label>
-    <button className="demo-button" type="button" onClick={fillDemoCredentials} disabled={busy}>Auto Fill Demo Credentials</button>
-    <button className="primary-button" type="submit" disabled={busy}>{busy ? 'Please wait…' : 'Sign In'}</button>
+    <button className="demo-button" type="button" onClick={handleDemoLogin} disabled={demoLoginBusy || busy}>{demoLoginBusy ? 'Logging in…' : 'Log in as Demo'}</button>
+    <button className="primary-button" type="submit" disabled={busy || demoLoginBusy}>{busy || demoLoginBusy ? 'Please wait…' : 'Sign In'}</button>
   </form></main>;
 
   return (
@@ -98,6 +115,6 @@ export default function App() {
           ))}
         </div>
       </section>
-    </main></div>
+    <NativeWorkflowStudio config={nativeWorkflowConfig} request={authenticatedNativeRequest} /></main></div>
   );
 }

@@ -1,0 +1,1479 @@
+{
+  "title": "Nutrition Dietitian Assistant",
+  "features": [
+    {
+      "id": "meal-plans-ai-generate",
+      "endpoint": "/api/meal-plans/ai-generate",
+      "title": "Meal plans/ai generate",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "goal",
+          "type": "text",
+          "required": false,
+          "label": "Goal",
+          "presets": [
+            "Example goal 1",
+            "Example goal 2",
+            "Example goal 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "calories_target",
+          "type": "number",
+          "required": false,
+          "label": "Calories target",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_preferences",
+          "type": "text",
+          "required": false,
+          "label": "Dietary preferences",
+          "presets": [
+            "Illustrative dietary preferences: prepare a concise review. Use the supplied information and identify missing evidence.",
+            "Illustrative dietary preferences: prepare a team planning review. Use the supplied information and identify missing evidence.",
+            "Illustrative dietary preferences: compare alternatives and explain assumptions. Use the supplied information and identify missing evidence."
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 216
+      }
+    },
+    {
+      "id": "calories-ai-analyze",
+      "endpoint": "/api/calories/ai-analyze",
+      "title": "Calories/ai analyze",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "food_name",
+          "type": "text",
+          "required": false,
+          "label": "Food name",
+          "presets": [
+            "Example food name 1",
+            "Example food name 2",
+            "Example food name 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "portion_size",
+          "type": "text",
+          "required": false,
+          "label": "Portion size",
+          "presets": [
+            "Example portion size 1",
+            "Example portion size 2",
+            "Example portion size 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 252
+      }
+    },
+    {
+      "id": "recipes-ai-generate",
+      "endpoint": "/api/recipes/ai-generate",
+      "title": "Recipes/ai generate",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "ingredients",
+          "type": "text",
+          "required": false,
+          "label": "Ingredients",
+          "presets": [
+            "Example ingredients 1",
+            "Example ingredients 2",
+            "Example ingredients 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_preferences",
+          "type": "text",
+          "required": false,
+          "label": "Dietary preferences",
+          "presets": [
+            "Illustrative dietary preferences: prepare a concise review. Use the supplied information and identify missing evidence.",
+            "Illustrative dietary preferences: prepare a team planning review. Use the supplied information and identify missing evidence.",
+            "Illustrative dietary preferences: compare alternatives and explain assumptions. Use the supplied information and identify missing evidence."
+          ],
+          "manual": false
+        },
+        {
+          "key": "cuisine",
+          "type": "text",
+          "required": false,
+          "label": "Cuisine",
+          "presets": [
+            "Example cuisine 1",
+            "Example cuisine 2",
+            "Example cuisine 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 362
+      }
+    },
+    {
+      "id": "nutrients-ai-analyze",
+      "endpoint": "/api/nutrients/ai-analyze",
+      "title": "Nutrients/ai analyze",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "food_items",
+          "type": "text",
+          "required": false,
+          "label": "Food items",
+          "presets": [
+            "Example food items 1",
+            "Example food items 2",
+            "Example food items 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "record_id",
+          "type": "text",
+          "required": false,
+          "label": "Nutrient analysis record",
+          "resource": "nutrients",
+          "manual": true
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 397
+      }
+    },
+    {
+      "id": "diet-recs-ai-recommend",
+      "endpoint": "/api/diet-recs/ai-recommend",
+      "title": "Diet recs/ai recommend",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "goal",
+          "type": "text",
+          "required": false,
+          "label": "Goal",
+          "presets": [
+            "Example goal 1",
+            "Example goal 2",
+            "Example goal 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "current_weight",
+          "type": "number",
+          "required": false,
+          "label": "Current weight",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "target_weight",
+          "type": "number",
+          "required": false,
+          "label": "Target weight",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "activity_level",
+          "type": "text",
+          "required": false,
+          "label": "Activity level",
+          "presets": [
+            "Example activity level 1",
+            "Example activity level 2",
+            "Example activity level 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_preference",
+          "type": "text",
+          "required": false,
+          "label": "Dietary preference",
+          "presets": [
+            "Example dietary preference 1",
+            "Example dietary preference 2",
+            "Example dietary preference 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "restrictions",
+          "type": "text",
+          "required": false,
+          "label": "Restrictions",
+          "presets": [
+            "Example restrictions 1",
+            "Example restrictions 2",
+            "Example restrictions 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 430
+      }
+    },
+    {
+      "id": "allergies-ai-check",
+      "endpoint": "/api/allergies/ai-check",
+      "title": "Allergies/ai check",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "food_name",
+          "type": "text",
+          "required": false,
+          "label": "Food name",
+          "presets": [
+            "Example food name 1",
+            "Example food name 2",
+            "Example food name 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "known_allergies",
+          "type": "text",
+          "required": false,
+          "label": "Known allergies",
+          "presets": [
+            "Example known allergies 1",
+            "Example known allergies 2",
+            "Example known allergies 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 455
+      }
+    },
+    {
+      "id": "grocery-ai-optimize",
+      "endpoint": "/api/grocery/ai-optimize",
+      "title": "Grocery/ai optimize",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "meal_plan",
+          "type": "text",
+          "required": false,
+          "label": "Meal plan",
+          "presets": [
+            "Example meal plan 1",
+            "Example meal plan 2",
+            "Example meal plan 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "budget",
+          "type": "number",
+          "required": false,
+          "label": "Budget",
+          "presets": [
+            25,
+            31,
+            38
+          ],
+          "manual": false
+        },
+        {
+          "key": "store_preference",
+          "type": "text",
+          "required": false,
+          "label": "Store preference",
+          "presets": [
+            "Example store preference 1",
+            "Example store preference 2",
+            "Example store preference 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_needs",
+          "type": "text",
+          "required": false,
+          "label": "Dietary needs",
+          "presets": [
+            "Example dietary needs 1",
+            "Example dietary needs 2",
+            "Example dietary needs 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 481
+      }
+    },
+    {
+      "id": "bmi-ai-analyze",
+      "endpoint": "/api/bmi/ai-analyze",
+      "title": "Bmi/ai analyze",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "height_cm",
+          "type": "number",
+          "required": false,
+          "label": "Height cm",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "weight_kg",
+          "type": "number",
+          "required": false,
+          "label": "Weight kg",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "age",
+          "type": "number",
+          "required": false,
+          "label": "Age",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "gender",
+          "type": "text",
+          "required": false,
+          "label": "Gender",
+          "presets": [
+            "Example gender 1",
+            "Example gender 2",
+            "Example gender 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "activity_level",
+          "type": "text",
+          "required": false,
+          "label": "Activity level",
+          "presets": [
+            "Example activity level 1",
+            "Example activity level 2",
+            "Example activity level 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 504
+      }
+    },
+    {
+      "id": "water-ai-recommend",
+      "endpoint": "/api/water/ai-recommend",
+      "title": "Water/ai recommend",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "weight_kg",
+          "type": "number",
+          "required": false,
+          "label": "Weight kg",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "activity_level",
+          "type": "text",
+          "required": false,
+          "label": "Activity level",
+          "presets": [
+            "Example activity level 1",
+            "Example activity level 2",
+            "Example activity level 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "climate",
+          "type": "text",
+          "required": false,
+          "label": "Climate",
+          "presets": [
+            "Example climate 1",
+            "Example climate 2",
+            "Example climate 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "current_intake",
+          "type": "text",
+          "required": false,
+          "label": "Current intake",
+          "presets": [
+            "Example current intake 1",
+            "Example current intake 2",
+            "Example current intake 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 528
+      }
+    },
+    {
+      "id": "supplements-ai-advise",
+      "endpoint": "/api/supplements/ai-advise",
+      "title": "Supplements/ai advise",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "health_goals",
+          "type": "text",
+          "required": false,
+          "label": "Health goals",
+          "presets": [
+            "Illustrative health goals: prepare a concise review. Use the supplied information and identify missing evidence.",
+            "Illustrative health goals: prepare a team planning review. Use the supplied information and identify missing evidence.",
+            "Illustrative health goals: compare alternatives and explain assumptions. Use the supplied information and identify missing evidence."
+          ],
+          "manual": false
+        },
+        {
+          "key": "current_diet",
+          "type": "text",
+          "required": false,
+          "label": "Current diet",
+          "presets": [
+            "Example current diet 1",
+            "Example current diet 2",
+            "Example current diet 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "medications",
+          "type": "text",
+          "required": false,
+          "label": "Medications",
+          "presets": [
+            "Example medications 1",
+            "Example medications 2",
+            "Example medications 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "age",
+          "type": "number",
+          "required": false,
+          "label": "Age",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 551
+      }
+    },
+    {
+      "id": "supplements-ai-interaction-check",
+      "endpoint": "/api/supplements/ai-interaction-check",
+      "title": "Supplements/ai interaction check",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "supplement_names",
+          "type": "json",
+          "required": true,
+          "label": "Supplement names",
+          "presets": [
+            [
+              "Illustrative source item 1"
+            ],
+            [
+              "Illustrative source item 2"
+            ],
+            [
+              "Illustrative source item 3"
+            ]
+          ],
+          "manual": false
+        },
+        {
+          "key": "medication_names",
+          "type": "json",
+          "required": true,
+          "label": "Medication names",
+          "presets": [
+            [
+              "Illustrative source item 1"
+            ],
+            [
+              "Illustrative source item 2"
+            ],
+            [
+              "Illustrative source item 3"
+            ]
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 568
+      }
+    },
+    {
+      "id": "fitness-meals-ai-plan",
+      "endpoint": "/api/fitness-meals/ai-plan",
+      "title": "Fitness meals/ai plan",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "fitness_goal",
+          "type": "text",
+          "required": false,
+          "label": "Fitness goal",
+          "presets": [
+            "Example fitness goal 1",
+            "Example fitness goal 2",
+            "Example fitness goal 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "weight",
+          "type": "number",
+          "required": false,
+          "label": "Weight",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "training_type",
+          "type": "text",
+          "required": false,
+          "label": "Training type",
+          "presets": [
+            "Example training type 1",
+            "Example training type 2",
+            "Example training type 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "meals_per_day",
+          "type": "text",
+          "required": false,
+          "label": "Meals per day",
+          "presets": [
+            "Example meals per day 1",
+            "Example meals per day 2",
+            "Example meals per day 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 610
+      }
+    },
+    {
+      "id": "substitutions-ai-suggest",
+      "endpoint": "/api/substitutions/ai-suggest",
+      "title": "Substitutions/ai suggest",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "original_food",
+          "type": "text",
+          "required": false,
+          "label": "Original food",
+          "presets": [
+            "Example original food 1",
+            "Example original food 2",
+            "Example original food 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "reason",
+          "type": "text",
+          "required": false,
+          "label": "Reason",
+          "presets": [
+            "Example reason 1",
+            "Example reason 2",
+            "Example reason 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 633
+      }
+    },
+    {
+      "id": "fasting-ai-guide",
+      "endpoint": "/api/fasting/ai-guide",
+      "title": "Fasting/ai guide",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "goal",
+          "type": "text",
+          "required": false,
+          "label": "Goal",
+          "presets": [
+            "Example goal 1",
+            "Example goal 2",
+            "Example goal 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "experience_level",
+          "type": "text",
+          "required": false,
+          "label": "Experience level",
+          "presets": [
+            "Example experience level 1",
+            "Example experience level 2",
+            "Example experience level 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "schedule",
+          "type": "text",
+          "required": false,
+          "label": "Schedule",
+          "presets": [
+            "Example schedule 1",
+            "Example schedule 2",
+            "Example schedule 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "health_conditions",
+          "type": "text",
+          "required": false,
+          "label": "Health conditions",
+          "presets": [
+            "Example health conditions 1",
+            "Example health conditions 2",
+            "Example health conditions 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 658
+      }
+    },
+    {
+      "id": "vitamins-ai-check",
+      "endpoint": "/api/vitamins/ai-check",
+      "title": "Vitamins/ai check",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "symptoms",
+          "type": "text",
+          "required": false,
+          "label": "Symptoms",
+          "presets": [
+            "Example symptoms 1",
+            "Example symptoms 2",
+            "Example symptoms 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "diet_description",
+          "type": "text",
+          "required": false,
+          "label": "Diet description",
+          "presets": [
+            "Example diet description 1",
+            "Example diet description 2",
+            "Example diet description 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 681
+      }
+    },
+    {
+      "id": "chat-ai-message",
+      "endpoint": "/api/chat/ai-message",
+      "title": "Chat/ai message",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "message",
+          "type": "text",
+          "required": false,
+          "label": "Message",
+          "presets": [
+            "Illustrative message: prepare a concise review. Use the supplied information and identify missing evidence.",
+            "Illustrative message: prepare a team planning review. Use the supplied information and identify missing evidence.",
+            "Illustrative message: compare alternatives and explain assumptions. Use the supplied information and identify missing evidence."
+          ],
+          "manual": false
+        },
+        {
+          "key": "context",
+          "type": "text",
+          "required": false,
+          "label": "Context",
+          "presets": [
+            "Illustrative context: prepare a concise review. Use the supplied information and identify missing evidence.",
+            "Illustrative context: prepare a team planning review. Use the supplied information and identify missing evidence.",
+            "Illustrative context: compare alternatives and explain assumptions. Use the supplied information and identify missing evidence."
+          ],
+          "manual": false
+        },
+        {
+          "key": "session_id",
+          "type": "text",
+          "required": false,
+          "label": "Session id",
+          "presets": [
+            "Example session id 1",
+            "Example session id 2",
+            "Example session id 3"
+          ],
+          "manual": true
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 708
+      }
+    },
+    {
+      "id": "ai-center-quick-analyze",
+      "endpoint": "/api/ai-center/quick-analyze",
+      "title": "Ai center/quick analyze",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "query",
+          "type": "text",
+          "required": false,
+          "label": "Query",
+          "presets": [
+            "Example query 1",
+            "Example query 2",
+            "Example query 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "type",
+          "type": "text",
+          "required": false,
+          "label": "Type",
+          "presets": [
+            "Example type 1",
+            "Example type 2",
+            "Example type 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 759
+      }
+    },
+    {
+      "id": "ai-dietary-goal-forecast",
+      "endpoint": "/api/ai/dietary-goal-forecast",
+      "title": "Dietary goal forecast",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "goal",
+          "type": "text",
+          "required": false,
+          "label": "Goal",
+          "presets": [
+            "Example goal 1",
+            "Example goal 2",
+            "Example goal 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "current_weight_kg",
+          "type": "number",
+          "required": false,
+          "label": "Current weight kg",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "target_weight_kg",
+          "type": "number",
+          "required": false,
+          "label": "Target weight kg",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": true
+        },
+        {
+          "key": "daily_calories",
+          "type": "number",
+          "required": false,
+          "label": "Daily calories",
+          "presets": [
+            1,
+            1,
+            2
+          ],
+          "manual": false
+        },
+        {
+          "key": "weeks",
+          "type": "text",
+          "required": false,
+          "label": "Weeks",
+          "presets": [
+            "Example weeks 1",
+            "Example weeks 2",
+            "Example weeks 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "activity_level",
+          "type": "text",
+          "required": false,
+          "label": "Activity level",
+          "presets": [
+            "Example activity level 1",
+            "Example activity level 2",
+            "Example activity level 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_restrictions",
+          "type": "text",
+          "required": false,
+          "label": "Dietary restrictions",
+          "presets": [
+            "Example dietary restrictions 1",
+            "Example dietary restrictions 2",
+            "Example dietary restrictions 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 801
+      }
+    },
+    {
+      "id": "ai-allergy-detection",
+      "endpoint": "/api/ai/allergy-detection",
+      "title": "Allergy detection",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "ingredients",
+          "type": "text",
+          "required": true,
+          "label": "Ingredients",
+          "presets": [
+            "Example ingredients 1",
+            "Example ingredients 2",
+            "Example ingredients 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "allergies",
+          "type": "text",
+          "required": false,
+          "label": "Allergies",
+          "presets": [
+            "Example allergies 1",
+            "Example allergies 2",
+            "Example allergies 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 822
+      }
+    },
+    {
+      "id": "ai-meal-prep-planner",
+      "endpoint": "/api/ai/meal-prep-planner",
+      "title": "Meal prep planner",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "meals",
+          "type": "text",
+          "required": false,
+          "label": "Meals",
+          "presets": [
+            "Example meals 1",
+            "Example meals 2",
+            "Example meals 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "days",
+          "type": "text",
+          "required": false,
+          "label": "Days",
+          "presets": [
+            "Example days 1",
+            "Example days 2",
+            "Example days 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "available_time_per_day_minutes",
+          "type": "text",
+          "required": false,
+          "label": "Available time per day minutes",
+          "presets": [
+            "2026-10-08",
+            "2026-10-08",
+            "2026-10-08"
+          ],
+          "manual": false
+        },
+        {
+          "key": "equipment",
+          "type": "text",
+          "required": false,
+          "label": "Equipment",
+          "presets": [
+            "Example equipment 1",
+            "Example equipment 2",
+            "Example equipment 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_restrictions",
+          "type": "text",
+          "required": false,
+          "label": "Dietary restrictions",
+          "presets": [
+            "Example dietary restrictions 1",
+            "Example dietary restrictions 2",
+            "Example dietary restrictions 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 840
+      }
+    },
+    {
+      "id": "ai-restaurant-nutrition-lookup",
+      "endpoint": "/api/ai/restaurant-nutrition-lookup",
+      "title": "Restaurant nutrition lookup",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "restaurant",
+          "type": "text",
+          "required": false,
+          "label": "Restaurant",
+          "presets": [
+            "Example restaurant 1",
+            "Example restaurant 2",
+            "Example restaurant 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dish",
+          "type": "text",
+          "required": true,
+          "label": "Dish",
+          "presets": [
+            "Example dish 1",
+            "Example dish 2",
+            "Example dish 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "modifications",
+          "type": "text",
+          "required": false,
+          "label": "Modifications",
+          "presets": [
+            "Example modifications 1",
+            "Example modifications 2",
+            "Example modifications 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "allergens_to_avoid",
+          "type": "text",
+          "required": false,
+          "label": "Allergens to avoid",
+          "presets": [
+            "Example allergens to avoid 1",
+            "Example allergens to avoid 2",
+            "Example allergens to avoid 3"
+          ],
+          "manual": true
+        },
+        {
+          "key": "user_goal",
+          "type": "text",
+          "required": false,
+          "label": "User goal",
+          "presets": [
+            "Example user goal 1",
+            "Example user goal 2",
+            "Example user goal 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 860
+      }
+    },
+    {
+      "id": "ai-grocery-list-from-meal-plans",
+      "endpoint": "/api/ai/grocery-list-from-meal-plans",
+      "title": "Grocery list from meal plans",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "meal_plans",
+          "type": "json",
+          "required": true,
+          "label": "Meal plans",
+          "presets": [
+            [
+              "Illustrative source item 1"
+            ],
+            [
+              "Illustrative source item 2"
+            ],
+            [
+              "Illustrative source item 3"
+            ]
+          ],
+          "manual": false
+        },
+        {
+          "key": "household_size",
+          "type": "text",
+          "required": false,
+          "label": "Household size",
+          "presets": [
+            "Example household size 1",
+            "Example household size 2",
+            "Example household size 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "pantry_items",
+          "type": "text",
+          "required": false,
+          "label": "Pantry items",
+          "presets": [
+            "Example pantry items 1",
+            "Example pantry items 2",
+            "Example pantry items 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_restrictions",
+          "type": "text",
+          "required": false,
+          "label": "Dietary restrictions",
+          "presets": [
+            "Example dietary restrictions 1",
+            "Example dietary restrictions 2",
+            "Example dietary restrictions 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "budget_usd",
+          "type": "text",
+          "required": false,
+          "label": "Budget usd",
+          "presets": [
+            "Example budget usd 1",
+            "Example budget usd 2",
+            "Example budget usd 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 889
+      }
+    },
+    {
+      "id": "ai-nutrient-gap-identifier",
+      "endpoint": "/api/ai/nutrient-gap-identifier",
+      "title": "Nutrient gap identifier",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "food_log",
+          "type": "text",
+          "required": true,
+          "label": "Food log",
+          "presets": [
+            "Example food log 1",
+            "Example food log 2",
+            "Example food log 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "days",
+          "type": "text",
+          "required": false,
+          "label": "Days",
+          "presets": [
+            "Example days 1",
+            "Example days 2",
+            "Example days 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "demographics",
+          "type": "text",
+          "required": false,
+          "label": "Demographics",
+          "presets": [
+            "Example demographics 1",
+            "Example demographics 2",
+            "Example demographics 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "dietary_pattern",
+          "type": "text",
+          "required": false,
+          "label": "Dietary pattern",
+          "presets": [
+            "Example dietary pattern 1",
+            "Example dietary pattern 2",
+            "Example dietary pattern 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "supplements",
+          "type": "text",
+          "required": false,
+          "label": "Supplements",
+          "presets": [
+            "Example supplements 1",
+            "Example supplements 2",
+            "Example supplements 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 923
+      }
+    },
+    {
+      "id": "ai-family-nutrition-sync",
+      "endpoint": "/api/ai/family-nutrition-sync",
+      "title": "Family nutrition sync",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "members",
+          "type": "json",
+          "required": true,
+          "label": "Members",
+          "presets": [
+            [
+              "Illustrative source item 1"
+            ],
+            [
+              "Illustrative source item 2"
+            ],
+            [
+              "Illustrative source item 3"
+            ]
+          ],
+          "manual": false
+        },
+        {
+          "key": "days",
+          "type": "text",
+          "required": false,
+          "label": "Days",
+          "presets": [
+            "Example days 1",
+            "Example days 2",
+            "Example days 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "budget_usd",
+          "type": "text",
+          "required": false,
+          "label": "Budget usd",
+          "presets": [
+            "Example budget usd 1",
+            "Example budget usd 2",
+            "Example budget usd 3"
+          ],
+          "manual": false
+        },
+        {
+          "key": "kitchen_constraints",
+          "type": "text",
+          "required": false,
+          "label": "Kitchen constraints",
+          "presets": [
+            "Illustrative kitchen constraints: prepare a concise review. Use the supplied information and identify missing evidence.",
+            "Illustrative kitchen constraints: prepare a team planning review. Use the supplied information and identify missing evidence.",
+            "Illustrative kitchen constraints: compare alternatives and explain assumptions. Use the supplied information and identify missing evidence."
+          ],
+          "manual": false
+        },
+        {
+          "key": "shared_meals_only",
+          "type": "boolean",
+          "required": false,
+          "label": "Shared meals only",
+          "presets": [
+            "Example shared meals only 1",
+            "Example shared meals only 2",
+            "Example shared meals only 3"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 953
+      }
+    },
+    {
+      "id": "ai-voice-food-diary-parse",
+      "endpoint": "/api/ai/voice-food-diary-parse",
+      "title": "Voice food diary parse",
+      "description": "Review native inputs and source evidence before generating. Examples are illustrative and require your review.",
+      "fields": [
+        {
+          "key": "transcript",
+          "type": "text",
+          "required": true,
+          "label": "Transcript",
+          "presets": [
+            "Example transcript 1",
+            "Example transcript 2",
+            "Example transcript 3"
+          ],
+          "manual": true
+        },
+        {
+          "key": "meal_time",
+          "type": "text",
+          "required": false,
+          "label": "Meal time",
+          "presets": [
+            "2026-10-08",
+            "2026-10-08",
+            "2026-10-08"
+          ],
+          "manual": false
+        }
+      ],
+      "source": {
+        "file": "server/index.js",
+        "line": 987
+      }
+    }
+  ],
+  "resources": [
+    {
+      "key": "meal-plans",
+      "endpoint": "/api/meal-plans",
+      "label": "Meal plans",
+      "fields": [
+        "title",
+        "goal",
+        "calories_target",
+        "meals"
+      ],
+      "updateFields": [
+        "title",
+        "goal",
+        "calories_target",
+        "meals",
+        "ai_suggestions"
+      ],
+      "delete": true,
+      "source": "server/index.js"
+    },
+    {
+      "key": "recipes",
+      "endpoint": "/api/recipes",
+      "label": "Recipes",
+      "fields": [
+        "title",
+        "description",
+        "ingredients",
+        "instructions",
+        "prep_time",
+        "cook_time",
+        "servings",
+        "cuisine",
+        "dietary_tags"
+      ],
+      "updateFields": [
+        "title",
+        "description",
+        "ingredients",
+        "instructions",
+        "prep_time",
+        "cook_time",
+        "servings",
+        "cuisine",
+        "dietary_tags"
+      ],
+      "delete": true,
+      "source": "server/index.js"
+    },
+    {
+      "key": "nutrients",
+      "endpoint": "/api/nutrients",
+      "label": "Nutrient analyses",
+      "fields": [
+        "food_items",
+        "total_calories",
+        "vitamins",
+        "minerals",
+        "macros",
+        "ai_analysis"
+      ],
+      "updateFields": [
+        "food_items",
+        "total_calories",
+        "vitamins",
+        "minerals",
+        "macros",
+        "ai_analysis"
+      ],
+      "delete": true,
+      "source": "server/index.js"
+    }
+  ]
+}
