@@ -1087,6 +1087,7 @@ app.use('/api/gap-no-audit-logging', require('./routes/gapFeat_no_audit_logging'
 app.use('/api/gap-no-multi', require('./routes/gapFeat_no_multi'));
 app.use('/api/gap-no-rbac-single-user-role', require('./routes/gapFeat_no_rbac_single_user_role'));
 
+try{app.use('/api/feature-pack', require('./routes/featurePack'));}catch(e){console.error('feature-pack mount fail:',e.message)}
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
